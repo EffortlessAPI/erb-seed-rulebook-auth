@@ -1,0 +1,10 @@
+{
+  "magicLinkBaseUrl": "https://magiclink.effortlessapi.com",
+  "tenantId": "$magicLinkTenantId$",
+  "tenantInfoUrl": "https://magiclink.effortlessapi.com/api/tenants/$magicLinkTenantId$",
+  "sendCodeUrl": "https://magiclink.effortlessapi.com/api/tenants/$magicLinkTenantId$/send-code",
+  "verifyCodeUrl": "https://magiclink.effortlessapi.com/api/tenants/$magicLinkTenantId$/verify-code",
+  "jwtIssuer": "https://magiclink.effortlessapi.com/$magicLinkTenantId$",
+  "jwtAlgorithm": "RS256",
+  "userTables": "$userTables$"
+}

@@ -1,0 +1,32 @@
+{
+  "seed": {
+    "id": "rulebook-auth",
+    "displayName": "AuthN / AuthZ",
+    "tagline": "Roles, row-level security and magic-link sign-in from your rulebook.",
+    "description": "Adds an auth/ folder: the rulebook's Security module (roles, table and field permissions, row filters, context variables) compiled to effortless-rbac.json and then to Postgres roles, grants, app.* identity helpers and row-level security policies; plus magic-link.json, the sign-in endpoints and JWT issuer for your magic-link tenant. Needs the Security module enabled in the rulebook.",
+    "kind": "child",
+    "category": "auth",
+    "stack": "Postgres RLS, JWT, Magic links",
+    "requiresInput": "A magic-link tenant id (from magiclink.effortlessapi.com) and the rulebook's Security module",
+    "mountPath": "auth",
+    "requires": "rulebook-backend",
+    "sortOrder": 230
+  },
+  "subSeeds": [],
+  "replacements": [
+    {
+      "key": "magicLinkTenantId",
+      "label": "Magic-link tenant id",
+      "description": "Your tenant on magiclink.effortlessapi.com. Public: the app fetches the tenant's public key from it to verify sign-in tokens.",
+      "placeholder": "e.g. 3f2c...",
+      "required": true
+    },
+    {
+      "key": "userTables",
+      "label": "Which tables hold people?",
+      "description": "The rulebook tables whose rows are users who sign in (comma-separated). Their email field is matched to the verified email in the sign-in token.",
+      "default": "",
+      "required": false
+    }
+  ]
+}

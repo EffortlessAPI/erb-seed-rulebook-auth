@@ -1,0 +1,28 @@
+{
+  "SSoTmeProjectId": "74a1d681-bd7a-4f09-b274-d24f4e81e2b7",
+  "Name": "rulebook-auth",
+  "Description": "AuthN/AuthZ add-in: role-based access from the rulebook's Security module, compiled to Postgres row-level security, plus magic-link sign-in config.",
+  "ProjectSettings": [],
+  "ProjectTranspilers": [
+    {
+      "IsSSoTTranspiler": false,
+      "Name": "rulebook-to-rbac",
+      "RelativePath": "/rbac",
+      "CommandLine": "rulebook-to-rbac -i ../../effortless-rulebook/effortless-rulebook.json -w 540000",
+      "IsDisabled": false,
+      "Description": "The Security module's roles and permissions as effortless-rbac.json"
+    },
+    {
+      "IsSSoTTranspiler": false,
+      "Name": "effortless-rbac-to-postgres-policies",
+      "RelativePath": "/policies",
+      "CommandLine": "effortless-rbac-to-postgres-policies -i ../rbac/effortless-rbac.json -w 540000",
+      "IsDisabled": false,
+      "Description": "Postgres roles, grants, app.* identity helpers and row-level security policies"
+    }
+  ],
+  "ShowHidden": false,
+  "ShowAllFiles": false,
+  "CurrentPath": null,
+  "SSoTmeProjectFiles": null
+}
