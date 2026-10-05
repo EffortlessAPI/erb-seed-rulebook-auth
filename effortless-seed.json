@@ -3,7 +3,7 @@
     "id": "rulebook-auth",
     "displayName": "AuthN / AuthZ",
     "tagline": "Roles, row-level security and magic-link sign-in from your rulebook.",
-    "description": "Adds an auth/ folder: the rulebook's Security module (roles, table and field permissions, row filters, context variables) compiled to effortless-rbac.json and then to Postgres roles, grants, app.* identity helpers and row-level security policies; plus magic-link.json, the sign-in endpoints and JWT issuer for your magic-link tenant. Needs the Security module enabled in the rulebook.",
+    "description": "Adds an auth/ folder: the rulebook's Security module (roles, table and field permissions, row filters, context variables) compiled to effortless-rbac.json and then to Postgres roles, grants, app.* identity helpers and row-level security policies; plus magic-link.json, the sign-in endpoints and JWT issuer for your magic-link tenant. Requires the rulebook's Security module: the ERBTables, ERBFields, ERBRoles (with at least one role), ERBUsers, ERBRoleTablePermissions, ERBRoleFieldPermissions and ERBContextVariables tables, with _meta.erb.modules.schema and .security enabled. Without them the build fails, naming each missing table; add them from the rulebook editor's Modules page (Security -> Enable, then Sync and add a role).",
     "kind": "child",
     "category": "auth",
     "stack": "Postgres RLS, JWT, Magic links",

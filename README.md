@@ -2,11 +2,26 @@
 
 An Effortless **add-in seed** (kind `child`), mounted at `auth/`. Requires the
 `rulebook-backend` add-in. It has no rulebook of its own: it reads the
-project's `../../effortless-rulebook/effortless-rulebook.json`, which must
-have the **Security module** enabled (`_meta.erb.modules.security.enabled`,
-with `ERBRoles`, `ERBRoleTablePermissions`, `ERBRoleFieldPermissions`,
-`ERBContextVariables` and at least one role). Turn it on from the rulebook
-editor's Modules page.
+project's `../../effortless-rulebook/effortless-rulebook.json`.
+
+## Requirement: the rulebook's Security module
+
+**The build fails on a rulebook without the Security module.** `rulebook-to-rbac`
+needs these tables in the rulebook, and stops with a message naming each one
+that is missing:
+
+- `ERBTables`, `ERBFields` (the Schema module, which Security requires), with
+  one row per table and field of the rulebook;
+- `ERBRoles` with **at least one role**, `ERBUsers`,
+  `ERBRoleTablePermissions`, `ERBRoleFieldPermissions`, `ERBContextVariables`;
+- `_meta.erb.modules.schema.enabled` and `_meta.erb.modules.security.enabled`
+  set to `true`.
+
+To add it: open the rulebook editor -> **Modules -> Security -> Enable** (it
+creates the tables and sets both flags), press **Sync** to fill
+`ERBTables`/`ERBFields`, add a role (e.g. `admin`, `DefaultCRUD` `CRUD`,
+`IsAdminEquivalent` true), save, and build again. The table definitions are
+`docs/ERB-MODEL.md` section 6 in Versioned-Stable-SSoTme-Tools.
 
 ## What the build produces
 
